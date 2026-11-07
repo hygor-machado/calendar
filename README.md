@@ -4,7 +4,7 @@ Calendário em JavaScript puro, sem dependências, empacotado como Web Component
 É a versão em código do reusable **Calendar Virtual** do app Bubble `native-calendar-backup-copy`:
 mesmos parâmetros, mesmos modos de seleção, mesma lista com carga progressiva e janela virtual.
 
-**Demonstração:** https://hygor-machado.github.io/virtual-calendar/
+**Demonstração:** publicada no Cloudflare Workers (Worker `calendar`, endereço `*.workers.dev`).
 
 ## Recursos
 
@@ -47,7 +47,7 @@ No celular emulado com CPU 4× mais lenta, o toque num dia leva cerca de 20 ms a
 ## Uso
 
 ```html
-<script type="module" src="https://hygor-machado.github.io/virtual-calendar/src/virtual-calendar.js"></script>
+<script type="module" src="https://SEU-ENDERECO.workers.dev/src/virtual-calendar.js"></script>
 
 <virtual-calendar
   selection-mode="single-range"
@@ -72,7 +72,7 @@ No celular emulado com CPU 4× mais lenta, o toque num dia leva cerca de 20 ms a
 Num elemento **HTML** da página:
 
 ```html
-<script type="module" src="https://hygor-machado.github.io/virtual-calendar/src/virtual-calendar.js"></script>
+<script type="module" src="https://SEU-ENDERECO.workers.dev/src/virtual-calendar.js"></script>
 <virtual-calendar id="cal" selection-mode="single-range" locale="pt-BR" timezone="America/Sao_Paulo" allow-deselect></virtual-calendar>
 <script>
   document.getElementById('cal').addEventListener('vc-change', function (e) {
@@ -150,20 +150,34 @@ O elemento também dispara `change` a cada seleção.
 
 ## Desenvolvimento
 
+Requer Node.js 22.23 ou mais novo (exigência do CLI `cf` do Cloudflare).
+
 ```bash
 npm install
 npx playwright install chromium
 npm start            # http://127.0.0.1:8080/
 npm test             # datas, fuso e seleção
 npm run test:e2e     # navegador
+npx cf dev           # mesmo site, servido pelo runtime do Cloudflare
 ```
 
 Estrutura:
 
-- `src/date-utils.js`: datas como números de dia, layout do mês e fuso horário.
-- `src/selection.js`: regras de seleção, visual de cada dia e formatos de saída.
-- `src/styles.js`: CSS do componente, injetado uma vez no `<head>`.
-- `src/virtual-calendar.js`: o Web Component.
-- `index.html` e `demo/`: página de demonstração, com o painel Settings do app Bubble.
+- `public/src/date-utils.js`: datas como números de dia, layout do mês e fuso horário.
+- `public/src/selection.js`: regras de seleção, visual de cada dia e formatos de saída.
+- `public/src/styles.js`: CSS do componente, injetado uma vez no `<head>`.
+- `public/src/virtual-calendar.js`: o Web Component.
+- `public/index.html` e `public/demo/`: página de demonstração, com o painel Settings do app Bubble.
+- `cloudflare.config.ts` e `wrangler.config.ts`: Worker `calendar`, que serve só a pasta `public/`.
 
-A página publicada é a branch `gh-pages`, atualizada pelo workflow `deploy.yml` a cada push na `main`.
+## Publicação (Cloudflare Workers)
+
+O site é um Worker só de arquivos estáticos, publicado com o CLI [`cf`](https://developers.cloudflare.com/cf/).
+O workflow `deploy.yml` roda a cada push na `main`: testa, monta com `cf build` e publica com `cf deploy`.
+
+Para ele publicar, o repositório precisa do secret `CLOUDFLARE_API_TOKEN`
+(Settings → Secrets and variables → Actions), com um token do Cloudflare criado pelo modelo
+**Edit Cloudflare Workers**. Se o token tiver acesso a mais de uma conta, adicione também `CLOUDFLARE_ACCOUNT_ID`.
+Sem o secret, o workflow só valida a publicação.
+
+Para publicar da sua máquina: `npx cf auth login` e depois `npm run deploy`.
