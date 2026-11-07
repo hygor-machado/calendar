@@ -1,0 +1,27 @@
+{
+  "name": "virtual-calendar",
+  "version": "1.0.0",
+  "description": "Calendário em JavaScript puro (Web Component): datas e intervalos, visões de dia, mês e ano, e lista virtualizada com carga progressiva.",
+  "private": true,
+  "type": "module",
+  "main": "src/virtual-calendar.js",
+  "exports": {
+    ".": "./src/virtual-calendar.js",
+    "./date-utils": "./src/date-utils.js",
+    "./selection": "./src/selection.js"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "start": "node test/server.mjs 8080",
+    "test": "node --test test/unit.test.mjs",
+    "test:e2e": "node --test test/e2e.test.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendário virtual</title>
+  <meta name="description" content="Calendário em JavaScript puro: seleção de datas e intervalos, visões de dia, mês e ano, e lista virtualizada com carga progressiva.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="demo/demo.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='5' width='26' height='24' rx='5' fill='%23625dfe'/%3E%3Crect x='3' y='5' width='26' height='7' rx='3' fill='%23401fc1'/%3E%3Ccircle cx='16' cy='20' r='4' fill='white'/%3E%3C/svg%3E">
+  <script type="module" src="src/virtual-calendar.js"></script>
+  <script type="module" src="demo/demo.js"></script>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <h1>Calendário virtual</h1>
+      <p class="lead">Carga progressiva e janela virtual.</p>
+      <div class="row">
+        <button type="button" class="btn" id="bench-run">Medir agora</button>
+        <div class="segmented" role="group" aria-label="Layout">
+          <button type="button" data-layout="list">Lista virtual</button>
+          <button type="button" data-layout="grid">Grade</button>
+        </div>
+      </div>
+      <pre id="bench-output" class="bench" hidden></pre>
+      <p id="intro-text" class="note"></p>
+    </header>
+
+    <section class="selection" aria-live="polite">
+      <p id="selection-output" class="selection-line">Seleção: —</p>
+      <dl id="selection-details" class="outputs"></dl>
+    </section>
+
+    <section id="settings-wrapper" class="settings">
+      <button type="button" class="btn" id="settings-toggle" aria-expanded="false" aria-controls="settings-panel">Settings / Configurações</button>
+      <form id="settings-panel" class="panel" hidden>
+        <p class="hint">Ajuste os inputs e clique em Aplicar e reiniciar. Isso volta à data inicial, limpa a seleção e reinicia a carga de meses.</p>
+        <div class="fields" id="settings-fields"></div>
+        <p class="hint">Em modo lista o calendário usa sempre o alinhamento natural e a visão de dias. Os dias de fora do mês ficam ocultos na lista e na grade com mais de um mês. As configurações ficam no endereço da página, para compartilhar.</p>
+        <div class="row">
+          <button type="submit" class="btn" id="settings-apply">Aplicar e reiniciar</button>
+          <button type="button" class="btn ghost" id="settings-defaults">Restaurar padrões</button>
+        </div>
+      </form>
+    </section>
+
+    <p id="calendar-load-status" class="status"></p>
+
+    <div id="calendar-wrapper">
+      <div id="calendar-under-test">
+        <virtual-calendar id="calendar"></virtual-calendar>
+      </div>
+    </div>
+
+    <footer class="foot">
+      <p>Web Component sem dependências. Código, documentação e exemplos de uso (inclusive dentro do Bubble) no <a href="https://github.com/hygor-machado/virtual-calendar">repositório no GitHub</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>
