@@ -4,7 +4,7 @@ Calendário em JavaScript puro, sem dependências, empacotado como Web Component
 É a versão em código do reusable **Calendar Virtual** do app Bubble `native-calendar-backup-copy`:
 mesmos parâmetros, mesmos modos de seleção, mesma lista com carga progressiva e janela virtual.
 
-**Demonstração:** publicada no Cloudflare Workers (Worker `calendar`, endereço `*.workers.dev`).
+**Demonstração:** https://calendar.engajus.workers.dev/ (Cloudflare Workers).
 
 ## Recursos
 
@@ -30,7 +30,7 @@ mesmos parâmetros, mesmos modos de seleção, mesma lista com carga progressiva
 
 ## Desempenho
 
-Medido com o benchmark oficial do projeto Bubble (`tools/calendar-benchmark` do repositório `papilon`):
+Medido com o benchmark oficial do projeto Bubble (`tools/calendar-benchmark` do repositório `papilon`, versão `code`):
 viewport 390 × 844, 22 meses carregados, mediana de 3 rodadas.
 
 | Métrica | Bubble v5 | Código |
@@ -47,7 +47,7 @@ No celular emulado com CPU 4× mais lenta, o toque num dia leva cerca de 20 ms a
 ## Uso
 
 ```html
-<script type="module" src="https://SEU-ENDERECO.workers.dev/src/virtual-calendar.js"></script>
+<script type="module" src="https://calendar.engajus.workers.dev/src/virtual-calendar.js"></script>
 
 <virtual-calendar
   selection-mode="single-range"
@@ -72,7 +72,7 @@ No celular emulado com CPU 4× mais lenta, o toque num dia leva cerca de 20 ms a
 Num elemento **HTML** da página:
 
 ```html
-<script type="module" src="https://SEU-ENDERECO.workers.dev/src/virtual-calendar.js"></script>
+<script type="module" src="https://calendar.engajus.workers.dev/src/virtual-calendar.js"></script>
 <virtual-calendar id="cal" selection-mode="single-range" locale="pt-BR" timezone="America/Sao_Paulo" allow-deselect></virtual-calendar>
 <script>
   document.getElementById('cal').addEventListener('vc-change', function (e) {
