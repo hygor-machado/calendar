@@ -35,7 +35,7 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-.page{max-width:620px;margin:0 auto;padding:24px 16px 64px}
+.page{max-width:620px;margin:0 auto;padding-block:24px 64px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
 h1{font-size:24px;font-weight:600;margin:8px 0 12px;letter-spacing:-.01em}
 .lead{margin:0 0 16px}
 .note{font-size:13px;margin:20px 0 0;color:var(--text)}

@@ -58,7 +58,7 @@ function configToURL(cfg) {
     if (f.type === 'toggle' ? v !== f.def : String(v) !== String(f.def)) q.set(f.attr, f.type === 'toggle' ? String(v) : v);
   }
   const s = q.toString();
-  history.replaceState(null, '', s ? `?${s}` : location.pathname);
+  try { history.replaceState(null, '', s ? `?${s}` : location.pathname); } catch { /* página dentro de um frame restrito */ }
 }
 
 function applyToCalendar(cfg) {
