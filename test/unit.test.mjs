@@ -1,8 +1,8 @@
 // Testes sem navegador: datas, fuso horário e seleção.  node --test test/
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import * as D from '../src/date-utils.js';
-import * as S from '../src/selection.js';
+import * as D from '../public/src/date-utils.js';
+import * as S from '../public/src/selection.js';
 
 const n = iso => D.parseISODate(iso);
 
