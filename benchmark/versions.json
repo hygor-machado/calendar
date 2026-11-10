@@ -1,0 +1,58 @@
+{
+  "base_url": "https://native-calendar-backup-copy.bubbleapps.io/version-test",
+  "default_versions": [
+    "claude_v4",
+    "claude_v3",
+    "chatgpt"
+  ],
+  "versions": {
+    "chatgpt": {
+      "page": "zz-virtual-chatgpt",
+      "reusable": "ru: Calendar Virtual (ChatGPT)",
+      "month": ".baTaOld",
+      "title": ".baTaOmaK",
+      "grid": ".baTaOlk",
+      "day": ".baTaOll"
+    },
+    "claude": {
+      "page": "zz-virtual-claude",
+      "reusable": "ru: Calendar Virtual (Claude)",
+      "month": ".baTaPaAi",
+      "title": ".baTaPaBaP",
+      "grid": ".baTaPaAp",
+      "day": ".baTaPaAq"
+    },
+    "claude_v3": {
+      "page": "zz-virtual-claude-v3",
+      "reusable": "ru: Calendar Virtual (Claude) v3",
+      "month": ".baTaPaPz",
+      "title": ".baTaPaQi",
+      "grid": ".baTaPaQaI",
+      "day": ".baTaPaQaJ"
+    },
+    "claude_v4": {
+      "page": "zz-virtual-claude-v4",
+      "reusable": "ru: Calendar Virtual (Claude) v4",
+      "month": ".baTaPaUaU",
+      "title": ".baTaPaVaD",
+      "grid": ".baTaPaUd",
+      "day": ".baTaPaUe"
+    },
+    "claude_v5": {
+      "page": "zz-virtual-claude-v5",
+      "reusable": "ru: Calendar Virtual (Claude) v5",
+      "month": ".baTaPyaE",
+      "title": ".baTaPyq",
+      "grid": ".baTaPyaQ",
+      "day": ".baTaPyaR"
+    },
+    "code": {
+      "url": "https://calendar.engajus.workers.dev/",
+      "reusable": "<virtual-calendar> (repositório hygor-machado/calendar)",
+      "month": ".vc-month",
+      "title": ".vc-month-title",
+      "grid": ".vc-days",
+      "day": ".vc-day"
+    }
+  }
+}

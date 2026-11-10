@@ -30,7 +30,7 @@ mesmos parâmetros, mesmos modos de seleção, mesma lista com carga progressiva
 
 ## Desempenho
 
-Medido com o benchmark oficial do projeto Bubble (`tools/calendar-benchmark` do repositório `papilon`, versão `code`):
+Medido com o benchmark oficial dos calendários (pasta [`benchmark/`](benchmark/), versão `code`):
 viewport 390 × 844, 22 meses carregados, mediana de 3 rodadas.
 
 | Métrica | Bubble v5 | Código |
@@ -169,6 +169,7 @@ Estrutura:
 - `public/src/virtual-calendar.js`: o Web Component.
 - `public/index.html` e `public/demo/`: página de demonstração, com o painel Settings do app Bubble.
 - `cloudflare.config.ts` e `wrangler.config.ts`: Worker `calendar`, que serve só a pasta `public/`.
+- `benchmark/`: benchmark oficial que compara as versões do calendário (Bubble e código); veja o README da pasta.
 
 ## Publicação (Cloudflare Workers)
 
